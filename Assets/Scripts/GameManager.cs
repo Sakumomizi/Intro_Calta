@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
         public int unitId; // CSVのunit_id
         public string uniqueId;//CSVのunique_ID
         public Sprite sprite; // 対応するイラスト
-        public Rect cropRect; 
     }
 
     public class UserData
@@ -189,18 +188,13 @@ public class GameManager : MonoBehaviour
             continue;
         }
 
-        float cropX = float.Parse(values[3]);
-        float cropY = float.Parse(values[4]);
-        float cropWidth = float.Parse(values[5]);
-        float cropHeight = float.Parse(values[6]);
-
+        
          // CardDataオブジェクトを作成し、リストに追加
         cardDatabase.Add(new CardData
         {
             unitId = unitId,
             uniqueId=uniqueId,
             sprite = sprite,
-            cropRect = new Rect(cropX, cropY, cropWidth, cropHeight)
         });
     }
 
@@ -302,11 +296,11 @@ void SetProblemCard()
     // 3: 違うunique_idのカードを設定
     if (selectedCard != null)
 {
-    problemCard.sprite = CreateCroppedSprite(selectedCard.sprite, selectedCard.cropRect);
+    
 }
 else
 {
-    problemCard.sprite = CreateCroppedSprite(correctCard.sprite, correctCard.cropRect);
+   
 }
 
    
